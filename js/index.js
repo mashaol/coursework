@@ -8,36 +8,21 @@ let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
 let downPressed = false;
+let treeImages = [];
 let trees = [];
 let treeHeight = 60;
 let roadSpeed = 2;
 let characterImages = [];
 let currentImageIndex = 0;
-let currentTreeIndex = 0;
-
-
 
 function preload() {
-    //loads character images into an array
     characterImages.push(loadImage("assets/female_walk1.png"));
     characterImages.push(loadImage("assets/female_walk2.png"));
 
-    //load tree images into the array
-    trees.push(loadImage("assets/tree1.png"));
-    trees.push(loadImage("assets/tree2.png"));
-    trees.push(loadImage("assets/tree3.png"));
-    trees.push(loadImage("assets/tree4.png"));
-}
-
-function setup() {
-    createCanvas(600, 400);
-    // let treeSpacing = width / 4;
-    //   for (let i = 0; i < 4; i++) {
-    //     trees.push(new Tree(treeSpacing * i));
-    //   }
-    // runs updateschracterposition function every 100 millisecods
-    setInterval(updateCharacterPostition, 100);
-    //   setInterval(updateTreePostition, 100);
+    treeImages.push(loadImage("assets/tree1.png"));
+    treeImages.push(loadImage("assets/tree2.png"));
+    treeImages.push(loadImage("assets/tree3.png"));
+    treeImages.push(loadImage("assets/tree4.png"));
 }
 
 class Tree {
@@ -46,14 +31,11 @@ class Tree {
         this.height = random(140, 260);
         this.x = x;
         this.y = height - brickHeight - this.height;
-        let fileName = "asssets/tree" + (trees.length + 1) + ".png";
-        trees.push(loadImage(fileName));
+        this.image = random(treeImages);
     }
 
     show() {
-        // fill(34, 139, 34);
-        // rect(this.x, this.y, this.width, this.height);
-        image(trees[currentTreeIndex], this.x, this.y, this.width, this.height);
+        image(this.image, this.x, this.y, this.width, this.height);
     }
 
     move() {
@@ -61,10 +43,20 @@ class Tree {
     }
 }
 
+function setup() {
+    createCanvas(600, 400);
+
+    let treeSpacing = width / 4;
+    for (let i = 0; i < 4; i++) {
+        trees.push(new Tree(treeSpacing * i));
+    }
+
+    setInterval(updateCharacterPostition, 100);
+}
+
 function draw() {
     background(220);
 
-    // move circle based on which keys are pressed
     if (leftPressed && circleX > circleSize / 2) {
         circleX -= circleSpeed;
     }
@@ -78,17 +70,15 @@ function draw() {
         circleY += circleSpeed;
     }
 
-    // draw brick road
     fill(153, 77, 0);
     for (let i = 0; i < width / 40; i++) {
         rect(i * 40 - roadPos, height - brickHeight, 40, brickHeight);
     }
-    roadPos += 2; // update road position
+    roadPos += 2;
     if (roadPos > 40) {
-        roadPos = 0; // wrap road position when it goes off screen
+        roadPos = 0;
     }
 
-    //drawing trees
     for (let i = 0; i < trees.length; i++) {
         trees[i].show();
         trees[i].move();
@@ -98,9 +88,7 @@ function draw() {
         }
     }
 
-    // draw circle
-    fill(255, 0, 0); // set circle color to red
-    // circle(circleX, circleY, circleSize);
+    fill(255, 0, 0);
     image(characterImages[currentImageIndex], circleX, circleY, circleSize, circleSize);
 }
 
@@ -129,11 +117,5 @@ function keyReleased() {
 }
 
 function updateCharacterPostition() {
-    // cycles through the indexs of the images in the chracterImages array
     currentImageIndex = (currentImageIndex + 1) % characterImages.length;
-}
-
-function updateTreePostition() {
-    // cycles through the indexs of the images in the chracterImages array
-    currentTreeIndex = (currentTreeIndex + 1) % trees.length;
 }
