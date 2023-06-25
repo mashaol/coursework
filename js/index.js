@@ -26,6 +26,20 @@ function setup() {
 function draw() {
     background(220);
 
+
+    if (leftPressed && charX > charSize / 2) {
+        charX -= charSpeed;
+    }
+    if (rightPressed && charX < width - charSize / 2) {
+        charX += charSpeed;
+    }
+    if (upPressed && charY > charSize / 2) {
+        charY -= charSpeed;
+    }
+    if (downPressed && charY < height - brickHeight - charSize / 2) {
+        charY += charSpeed;
+    }
+
     // draw brick road
     fill(153, 77, 0);
     for (let i = 0; i < width / 40; i++) {
@@ -53,17 +67,17 @@ function keyPressed() {
     }
 }
 
-// function keyReleased() {
-//     if (keyCode === LEFT_ARROW) {
-//         leftPressed = false;
-//     } else if (keyCode === RIGHT_ARROW) {
-//         rightPressed = false;
-//     } else if (keyCode === UP_ARROW) {
-//         upPressed = false;
-//     } else if (keyCode === DOWN_ARROW) {
-//         downPressed = false;
-//     }
-// }
+function keyReleased() {
+    if (keyCode === LEFT_ARROW) {
+        leftPressed = false;
+    } else if (keyCode === RIGHT_ARROW) {
+        rightPressed = false;
+    } else if (keyCode === UP_ARROW) {
+        upPressed = false;
+    } else if (keyCode === DOWN_ARROW) {
+        downPressed = false;
+    }
+}
 
 function updateCharacterPostition() {
     currentImageIndex = (currentImageIndex + 1) % characterImages.length;
