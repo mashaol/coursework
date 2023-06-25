@@ -1,8 +1,8 @@
 
-let circleX = 40;
-let circleY = 325;
-let circleSize = 70;
-let circleSpeed = 3;
+let charX = 40;
+let charY = 325;
+let charSize = 70;
+let charSpeed = 3;
 let brickHeight = 40;
 let roadPos = 0;
 let leftPressed = false;
@@ -38,7 +38,7 @@ function draw() {
 
 
     fill(255, 0, 0);
-    image(characterImages[currentImageIndex], circleX, circleY, circleSize, circleSize);
+    image(characterImages[currentImageIndex], charX, charY, charSize, charSize);
 }
 
 function keyPressed() {
@@ -53,17 +53,17 @@ function keyPressed() {
     }
 }
 
-function keyReleased() {
-    if (keyCode === LEFT_ARROW) {
-        leftPressed = false;
-    } else if (keyCode === RIGHT_ARROW) {
-        rightPressed = false;
-    } else if (keyCode === UP_ARROW) {
-        upPressed = false;
-    } else if (keyCode === DOWN_ARROW) {
-        downPressed = false;
-    }
-}
+// function keyReleased() {
+//     if (keyCode === LEFT_ARROW) {
+//         leftPressed = false;
+//     } else if (keyCode === RIGHT_ARROW) {
+//         rightPressed = false;
+//     } else if (keyCode === UP_ARROW) {
+//         upPressed = false;
+//     } else if (keyCode === DOWN_ARROW) {
+//         downPressed = false;
+//     }
+// }
 
 function updateCharacterPostition() {
     currentImageIndex = (currentImageIndex + 1) % characterImages.length;
