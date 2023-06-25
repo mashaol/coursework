@@ -1,4 +1,3 @@
-
 let charX = 40;
 let charY = 325;
 let charSize = 70;
@@ -9,12 +8,12 @@ let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
 let downPressed = false;
-let characterImages = [];
-let currentImageIndex = 0;
 let treeImages = [];
 let trees = [];
 let treeHeight = 60;
 let roadSpeed = 2;
+let characterImages = [];
+let currentImageIndex = 0;
 
 function preload() {
     characterImages.push(loadImage("assets/female_walk1.png"));
@@ -31,8 +30,7 @@ class Tree {
         this.width = 30;
         this.height = random(140, 260);
         this.x = x;
-        // this.y = height - brickHeight - this.height;
-        this.y=50;
+        this.y = height - brickHeight - this.height;
         this.image = random(treeImages);
     }
 
@@ -46,20 +44,19 @@ class Tree {
 }
 
 function setup() {
-
+    //createCanvas(600, 400);
+    const canvas = createCanvas(600, 400);
+    canvas.position(windowWidth / 2 - width / 2, windowHeight / 2 - height / 2);
     let treeSpacing = width / 4;
     for (let i = 0; i < 4; i++) {
         trees.push(new Tree(treeSpacing * i));
     }
 
-    const canvas = createCanvas(600, 400);
-    canvas.position(windowWidth / 2 - width / 2, windowHeight / 2 - height / 2);
     setInterval(updateCharacterPostition, 100);
 }
 
 function draw() {
     background(220);
-
 
     if (leftPressed && charX > charSize / 2) {
         charX -= charSpeed;
@@ -74,7 +71,6 @@ function draw() {
         charY += charSpeed;
     }
 
-    // draw brick road
     fill(153, 77, 0);
     for (let i = 0; i < width / 40; i++) {
         rect(i * 40 - roadPos, height - brickHeight, 40, brickHeight);
@@ -84,7 +80,6 @@ function draw() {
         roadPos = 0;
     }
 
-
     for (let i = 0; i < trees.length; i++) {
         trees[i].show();
         trees[i].move();
@@ -93,8 +88,6 @@ function draw() {
             trees[i].x = width - treeSpacing + trees[i].width + 150;
         }
     }
-
-
 
     fill(255, 0, 0);
     image(characterImages[currentImageIndex], charX, charY, charSize, charSize);
