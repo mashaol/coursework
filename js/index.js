@@ -11,13 +11,47 @@ let upPressed = false;
 let downPressed = false;
 let characterImages = [];
 let currentImageIndex = 0;
+let treeImages = [];
+let trees = [];
+let treeHeight = 60;
+let roadSpeed = 2;
 
 function preload() {
     characterImages.push(loadImage("assets/female_walk1.png"));
     characterImages.push(loadImage("assets/female_walk2.png"));
+
+    treeImages.push(loadImage("assets/tree1.png"));
+    treeImages.push(loadImage("assets/tree2.png"));
+    treeImages.push(loadImage("assets/tree3.png"));
+    treeImages.push(loadImage("assets/tree4.png"));
+}
+
+class Tree {
+    constructor(x) {
+        this.width = 30;
+        this.height = random(140, 260);
+        this.x = x;
+        // this.y = height - brickHeight - this.height;
+        this.y=50;
+        this.image = random(treeImages);
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.height);
+    }
+
+    move() {
+        this.x -= roadSpeed;
+    }
 }
 
 function setup() {
+
+    let treeSpacing = width / 4;
+    for (let i = 0; i < 4; i++) {
+        trees.push(new Tree(treeSpacing * i));
+    }
+
     const canvas = createCanvas(600, 400);
     canvas.position(windowWidth / 2 - width / 2, windowHeight / 2 - height / 2);
     setInterval(updateCharacterPostition, 100);
@@ -49,6 +83,17 @@ function draw() {
     if (roadPos > 40) {
         roadPos = 0;
     }
+
+
+    for (let i = 0; i < trees.length; i++) {
+        trees[i].show();
+        trees[i].move();
+        if (trees[i].x + trees[i].width < 0) {
+            let treeSpacing = width / 4;
+            trees[i].x = width - treeSpacing + trees[i].width + 150;
+        }
+    }
+
 
 
     fill(255, 0, 0);
