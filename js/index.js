@@ -14,6 +14,7 @@ let treeHeight = 60;
 let roadSpeed = 2;
 let characterImages = [];
 let currentImageIndex = 0;
+let brickSpacing = 40;
 
 function preload() {
     //pushes character images into an array
@@ -39,7 +40,7 @@ class Tree {
     }
     //dispalys tree
     show() {
-        image(this.image, this.x, this.y, this.width, this.height);
+        image(this.image, this.x, this.y+10, this.width, this.height);
     }
     //changes the x-position of tree in line with road speed
     move() {
@@ -82,15 +83,15 @@ function draw() {
     if (downPressed && charY < height - brickHeight - charSize / 2) {
         charY += charSpeed;
     }
-//created blocks to fit on screen with current roadPos
+//created blocks to fit on screen with current roadPos, 
     fill(153, 77, 0);
-    for (let i = 0; i < width / 10; i++) {
-        rect(i * 10 - roadPos, height - brickHeight, 10, brickHeight);
+    for (let i = 0; i < width / brickSpacing; i++) {
+        rect(i * brickSpacing - roadPos, height - brickHeight, brickSpacing, brickHeight);
     }
     //updates roadPos after creating blocks
     roadPos += 2;
-    //validates that only 40 blocks appear at a time, otherwise resets to 0 to start 
-    if (roadPos > 10) {
+    //validates that 
+    if (roadPos > brickSpacing) {
         roadPos = 0;
     }
 
