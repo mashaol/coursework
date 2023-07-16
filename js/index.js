@@ -65,7 +65,7 @@ function setup() {
 }
 
 function draw() {
-    background(220);
+    background(125, 190, 250);
 //in response to keypressed the character postition changes the x and y position, respectively
 //validates that character  doesn't go off screen to the left (stays half a character)
     if (leftPressed && charX > charSize / 2) {
