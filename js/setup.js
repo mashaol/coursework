@@ -9,6 +9,11 @@ function setup() {
     for (let i = 0; i < 4; i++) {
         trees.push(new Tree(treeSpacing * i));
     }
+    let spiderSpacing = height/4
+    for(let i = 0; i < 4; i++){
+        spiders.push(new Spider(spiderSpacing * i));
+    }
+
     //every 100 millisecods calls the updateCharacterPosition function to change
     //the walking images of the character 
     setInterval(updateCharacterPostition, 100);

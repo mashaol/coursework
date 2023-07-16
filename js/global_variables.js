@@ -15,3 +15,5 @@ let roadSpeed = 2;
 let characterImages = [];
 let currentImageIndex = 0;
 let brickSpacing = 40;
+let spiders = [];
+let spiderImages = [];
