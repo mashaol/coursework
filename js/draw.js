@@ -68,6 +68,7 @@ function draw() {
         fill(255);
         textAlign(CENTER,CENTER);
         text('GAME OVER',width/2,height/2);
+        restartButton.show();
         return;
     }
 }

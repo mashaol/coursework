@@ -9,13 +9,40 @@ function setup() {
     for (let i = 0; i < 4; i++) {
         trees.push(new Tree(treeSpacing * i));
     }
-    let spiderSpacing = height/4
-    for(let i = 0; i < 4; i++){
+    let spiderSpacing = height / 4
+    for (let i = 0; i < 4; i++) {
         spiders.push(new Spider(spiderSpacing * i));
     }
 
     //every 100 millisecods calls the updateCharacterPosition function to change
     //the walking images of the character 
     setInterval(updateCharacterPostition, 100);
+
+    //craeting restart button(hiding it while game is played)
+    restartButton = createButton('Restart');
+    restartButton.position(width / 2, height / 2 + 40);
+    restartButton.mousePressed(restartGame);
+    restartButton.hide();
+
+    function restartGame() {
+        //hides button
+        restartButton.hide();
+
+        //reset game stats
+        gameRunning = true;
+        live = 5;
+
+        //reset character position
+        charX = 40;
+        charY = 325;
+
+        //reset spiders' positions
+        spiders.forEach(spider => {
+            spider.x = width - spider.width / 2;
+            spider.y = random(50, 350);
+            spider.isColliding = false;
+        });
+        location.reload();
+    }
 }
 
