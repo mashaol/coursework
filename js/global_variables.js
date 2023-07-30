@@ -17,3 +17,5 @@ let currentImageIndex = 0;
 let brickSpacing = 40;
 let spiders = [];
 let spiderImages = [];
+let heartImage;
+let lives = 5;

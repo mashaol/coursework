@@ -17,4 +17,7 @@ function preload() {
     spiderImages.push(loadImage("assets/gold_spider.png"));
     spiderImages.push(loadImage("assets/grey_spider.png"));
     spiderImages.push(loadImage("assets/white_spider.png"));
+
+    //heart image
+    heartImage = loadImage("assets/heart.png");
 }

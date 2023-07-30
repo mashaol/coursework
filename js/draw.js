@@ -54,4 +54,8 @@ function draw() {
     fill(255, 0, 0);
     image(characterImages[currentImageIndex], charX, charY, charSize, charSize);
 
+    image(heartImage,width-70,10,30,30);
+    textSize(24);
+    fill(255);
+    text(lives,width-30,35);
 }
