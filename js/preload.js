@@ -11,7 +11,10 @@ function preload() {
 
     //pushes spider images into an array
     spiderImages.push(loadImage("assets/purple_spider.png"));
-    spiderImages.push(loadImage("assets/purple_spider.png"));
-    spiderImages.push(loadImage("assets/purple_spider.png"));
-    spiderImages.push(loadImage("assets/purple_spider.png"));
+    spiderImages.push(loadImage("assets/black_spider.png"));
+    spiderImages.push(loadImage("assets/blue_spider.png"));
+    spiderImages.push(loadImage("assets/brown_spider.png"));
+    spiderImages.push(loadImage("assets/gold_spider.png"));
+    spiderImages.push(loadImage("assets/grey_spider.png"));
+    spiderImages.push(loadImage("assets/white_spider.png"));
 }
