@@ -1,7 +1,7 @@
 function draw() {
     background(125, 190, 250);
-//in response to keypressed the character postition changes the x and y position, respectively
-//validates that character  doesn't go off screen to the left (stays half a character)
+    //in response to keypressed the character postition changes the x and y position, respectively
+    //validates that character  doesn't go off screen to the left (stays half a character)
     if (leftPressed && charX > charSize / 2) {
         charX -= charSpeed;
     }
@@ -17,7 +17,7 @@ function draw() {
     if (downPressed && charY < height - brickHeight - charSize / 2) {
         charY += charSpeed;
     }
-//created blocks to fit on screen with current roadPos, 
+    //created blocks to fit on screen with current roadPos, 
     fill(153, 77, 0);
     for (let i = 0; i < width / brickSpacing; i++) {
         rect(i * brickSpacing - roadPos, height - brickHeight, brickSpacing, brickHeight);
@@ -41,12 +41,15 @@ function draw() {
     for (let i = 0; i < spiders.length; i++) {
         spiders[i].show();
         spiders[i].move();
-        if(spiders[i].hits({charX,charY,charSize})){
+        if (spiders[i].hits({ charX, charY, charSize })) {
             console.log('collision detected');
+            lives--;
+        } else {
+            spiders[i].noHit({ charX, charY, charSize });
         }
         if (spiders[i].x + spiders[i].width < 0) {
-            let spiderSpacing = height / 4 ;
-            spiders[i].y = random(50,350);
+            let spiderSpacing = height / 4;
+            spiders[i].y = random(50, 350);
             spiders[i].x = width - spiderSpacing + spiders[i].width + 150;
         }
     }
@@ -54,8 +57,8 @@ function draw() {
     fill(255, 0, 0);
     image(characterImages[currentImageIndex], charX, charY, charSize, charSize);
 
-    image(heartImage,width-70,10,30,30);
+    image(heartImage, width - 70, 10, 30, 30);
     textSize(24);
     fill(255);
-    text(lives,width-30,35);
+    text(lives, width - 30, 35);
 }
