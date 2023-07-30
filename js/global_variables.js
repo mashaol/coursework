@@ -19,3 +19,4 @@ let spiders = [];
 let spiderImages = [];
 let heartImage;
 let lives = 5;
+let gameRunning = true;

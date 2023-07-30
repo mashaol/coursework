@@ -61,4 +61,13 @@ function draw() {
     textSize(24);
     fill(255);
     text(lives, width - 30, 35);
+
+    if(lives <= 0){
+        background(0);
+        textSize(32);
+        fill(255);
+        textAlign(CENTER,CENTER);
+        text('GAME OVER',width/2,height/2);
+        return;
+    }
 }
