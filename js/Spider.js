@@ -16,4 +16,14 @@ class Spider    {
     move() {
         this.x -= roadSpeed+random(-5,10);
     }
+
+    hits(character){
+        let xDistance = abs(this.x - character.charX);
+        let yDistance = abs(this.y - character.charY);
+        if(xDistance < this.width/2 +character.charSize/2 && 
+        yDistance < this.height/2 +character.charSize/2){
+            return true;
+        } 
+        return false;
+    }
 }

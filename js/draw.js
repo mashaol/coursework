@@ -41,6 +41,9 @@ function draw() {
     for (let i = 0; i < spiders.length; i++) {
         spiders[i].show();
         spiders[i].move();
+        if(spiders[i].hits({charX,charY,charSize})){
+            console.log('collision detected');
+        }
         if (spiders[i].x + spiders[i].width < 0) {
             let spiderSpacing = height / 4 ;
             spiders[i].y = random(50,350);
@@ -50,4 +53,5 @@ function draw() {
 
     fill(255, 0, 0);
     image(characterImages[currentImageIndex], charX, charY, charSize, charSize);
+
 }
