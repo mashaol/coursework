@@ -1,5 +1,14 @@
 function setup() {
     initGame();
+     //craeting restart button(hiding it while game is played)
+     restartButton = createButton('');
+     restartButton.style('background-image','url(assets/restartButton.png');
+     restartButton.style('background-size','cover');
+     restartButton.style('width','120px');
+     restartButton.style('height','50px');
+     restartButton.position((windowWidth - 100)/2, (windowHeight/2) + 50);
+     restartButton.mousePressed(restartGame);
+     restartButton.hide();
 }
 function initGame() {
     //centred canvas
@@ -21,11 +30,7 @@ function initGame() {
     //the walking images of the character 
     setInterval(updateCharacterPostition, 100);
 
-    //craeting restart button(hiding it while game is played)
-    restartButton = createButton('Restart');
-    restartButton.position(width / 2, height / 2 + 40);
-    restartButton.mousePressed(restartGame);
-    restartButton.hide();
+   
 }
 
 function restartGame() {
