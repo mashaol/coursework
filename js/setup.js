@@ -1,4 +1,7 @@
 function setup() {
+    initGame();
+}
+function initGame() {
     //centred canvas
     const canvas = createCanvas(600, 400);
     canvas.position(windowWidth / 2 - width / 2, windowHeight / 2 - height / 2);
@@ -23,26 +26,11 @@ function setup() {
     restartButton.position(width / 2, height / 2 + 40);
     restartButton.mousePressed(restartGame);
     restartButton.hide();
-
-    function restartGame() {
-        //hides button
-        restartButton.hide();
-
-        //reset game stats
-        gameRunning = true;
-        live = 5;
-
-        //reset character position
-        charX = 40;
-        charY = 325;
-
-        //reset spiders' positions
-        spiders.forEach(spider => {
-            spider.x = width - spider.width / 2;
-            spider.y = random(50, 350);
-            spider.isColliding = false;
-        });
-        location.reload();
-    }
 }
 
+function restartGame() {
+    lives = 5;
+    initGame();
+    restartButton.hide();
+    loop();
+}
