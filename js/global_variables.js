@@ -19,5 +19,6 @@ let spiders = [];
 let spiderImages = [];
 let heartImage;
 let lives = 5;
-let gameRunning = true;
+let gameRunning = false;
 let restartButton;
+let startButton;

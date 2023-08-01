@@ -1,4 +1,7 @@
 function draw() {
+    if (!gameRunning) {
+        return;
+    }
     background(125, 190, 250);
     //in response to keypressed the character postition changes the x and y position, respectively
     //validates that character  doesn't go off screen to the left (stays half a character)
@@ -62,12 +65,12 @@ function draw() {
     fill(255);
     text(lives, width - 30, 35);
 
-    if(lives <= 0){
+    if (lives <= 0) {
         background(0);
         textSize(32);
         fill(255);
-        textAlign(CENTER,CENTER);
-        text('GAME OVER',width/2,height/2);
+        textAlign(CENTER, CENTER);
+        text('GAME OVER', width / 2, height / 2);
         restartButton.show();
         noLoop();
         return;
