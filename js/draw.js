@@ -59,12 +59,12 @@ function draw() {
 
     fill(255, 0, 0);
     image(characterImages[currentImageIndex], charX, charY, charSize, charSize);
-
+//diplayes the heart image in the top right screen
     image(heartImage, width - 70, 10, 30, 30);
     textSize(24);
     fill(255);
     text(lives, width - 30, 35);
-
+//game over screen when lives reach zero
     if (lives <= 0) {
         background(0);
         textSize(32);

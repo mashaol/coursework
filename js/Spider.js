@@ -1,10 +1,10 @@
 class Spider {
     constructor(x) {
         this.width = 30;
-        //height of tree variable
+        //height of spider 
         this.height = 40;
         this.x = x;
-        //bottom of tree starts from the bricks
+        //makes the spider generate at random y value
         this.y = random(10, 350);
         this.image = random(spiderImages);
         //checks if the spider has collided already

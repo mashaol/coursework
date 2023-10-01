@@ -29,6 +29,7 @@ function initGame() {
     for (let i = 0; i < 4; i++) {
         trees.push(new Tree(treeSpacing * i));
     }
+    //creates the spider objects
     let spiderSpacing = height / 4
     for (let i = 0; i < 4; i++) {
         spiders.push(new Spider(spiderSpacing * i));
