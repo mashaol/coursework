@@ -75,4 +75,17 @@ function draw() {
         noLoop();
         return;
     }
+    if(millis() - lastLevelUpTime  >= levelChangeTime){
+        levelUp();
+    }
+}
+function levelUp(){
+    level++;
+    lastLevelUpTime =  millis();
+
+    //increase number of spiders
+    let newSpider = new Spider(height / 4 * spiders.length);
+    spiders.push(newSpider);
+
+    console.log('Level Up', level);
 }

@@ -18,6 +18,8 @@ function setup() {
     restartButton.position((windowWidth - 100) / 2, (windowHeight / 2) + 50);
     restartButton.mousePressed(restartGame);
     restartButton.hide();
+    lastLevelUpTime = millis();
+    //initGame();
     startGame();
 }
 function initGame() {
@@ -26,12 +28,14 @@ function initGame() {
     let treeSpacing = width / 4;
     //constructs and pushes tree objects into an array tree, with treespacing being,
     // with even spacing
+    //fixed so more trees are not added on each level 
+    trees = [];
     for (let i = 0; i < 4; i++) {
         trees.push(new Tree(treeSpacing * i));
     }
     //creates the spider objects
     let spiderSpacing = height / 4
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4 *  level; i++) {
         spiders.push(new Spider(spiderSpacing * i));
     }
 
@@ -48,6 +52,10 @@ function restartGame() {
     initGame();
     restartButton.hide();
     loop();
+    level = 1;
+    lastLevelUpTime = millis();
+    spiders  =  [];
+    initGame();
 }
 function startGame() {
     //centred canvas
