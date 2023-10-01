@@ -23,5 +23,7 @@ let gameRunning = false;
 let restartButton;
 let startButton;
 let level =  1;
-let levelChangeTime = 5 * 1000;
+let levelChangeTime = 15 * 1000;
 let lastLevelUpTime = 0;
+let instructionButton;
+

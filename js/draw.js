@@ -1,4 +1,25 @@
+// to return from the instruction screen to the start screen
+let backButton;
 function draw() {
+    console.log('showing instructions' +  showingInstructions);
+    if (showingInstructions) {
+        console.log('help');
+        background(0);
+        fill(255);
+        textSize(24);
+        text('How to  play:', width / 2, height / 2 - 50);
+        text('Press arrow keys to move', width / 2, height / 2);
+        //creating back button
+        if (!backButton) {
+            backButton = createButton('Back');
+            backButton.position((windowWidth - 100) / 2, (windowHeight / 2));
+            backButton.mousePressed(hideInstructions);
+        }
+        backButton.show();
+        return;
+    } else if (backButton) {
+        backButton.hide();
+    }
     if (!gameRunning) {
         return;
     }
@@ -59,16 +80,16 @@ function draw() {
 
     fill(255, 0, 0);
     image(characterImages[currentImageIndex], charX, charY, charSize, charSize);
-//diplayes the heart image in the top right screen
+    //diplayes the heart image in the top right screen
     image(heartImage, width - 70, 10, 30, 30);
     textSize(24);
     fill(255);
     text(lives, width - 30, 35);
-//displaying current level
+    //displaying current level
     textSize(30);
     fill(0);
-    text("Level  " + level,70,35);
-//game over screen when lives reach zero
+    text("Level  " + level, 70, 35);
+    //game over screen when lives reach zero
     if (lives <= 0) {
         background(0);
         textSize(32);
@@ -79,13 +100,13 @@ function draw() {
         noLoop();
         return;
     }
-    if(millis() - lastLevelUpTime  >= levelChangeTime){
+    if (millis() - lastLevelUpTime >= levelChangeTime) {
         levelUp();
     }
 }
-function levelUp(){
+function levelUp() {
     level++;
-    lastLevelUpTime =  millis();
+    lastLevelUpTime = millis();
 
     //increase number of spiders
     let newSpider = new Spider(height / 4 * spiders.length);
@@ -93,3 +114,4 @@ function levelUp(){
 
     console.log('Level Up', level);
 }
+

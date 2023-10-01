@@ -19,6 +19,11 @@ function setup() {
     restartButton.mousePressed(restartGame);
     restartButton.hide();
     lastLevelUpTime = millis();
+    //creating the instruction button
+    instructionButton = createButton('Instructions');
+    instructionButton.position((windowWidth - 100)/2,(windowHeight/2));
+    instructionButton.mousePressed(showInstructions);
+    instructionButton.show();
     //initGame();
     startGame();
 }
@@ -69,6 +74,20 @@ function startGame() {
 
     //initGame();
     noLoop();
+}
 
+//when instruction button is pressed
+showingInstructions = false;
+function showInstructions(){
+    console.log('show instruction');
+    showingInstructions = true;
+    console.log("showInstruction " + showingInstructions);
+    startButton.hide();
+    instructionButton.hide();
+}
 
+function hideInstructions(){
+    showingInstructions = false;
+    startButton.show();
+    instructionButton.show();
 }
