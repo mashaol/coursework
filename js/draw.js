@@ -64,6 +64,10 @@ function draw() {
     textSize(24);
     fill(255);
     text(lives, width - 30, 35);
+//displaying current level
+    textSize(30);
+    fill(0);
+    text("Level  " + level,70,35);
 //game over screen when lives reach zero
     if (lives <= 0) {
         background(0);
