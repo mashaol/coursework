@@ -1,25 +1,6 @@
-// to return from the instruction screen to the start screen
-let backButton;
+
 function draw() {
-    console.log('showing instructions' +  showingInstructions);
-    if (showingInstructions) {
-        console.log('help');
-        background(0);
-        fill(255);
-        textSize(24);
-        text('How to  play:', width / 2, height / 2 - 50);
-        text('Press arrow keys to move', width / 2, height / 2);
-        //creating back button
-        if (!backButton) {
-            backButton = createButton('Back');
-            backButton.position((windowWidth - 100) / 2, (windowHeight / 2));
-            backButton.mousePressed(hideInstructions);
-        }
-        backButton.show();
-        return;
-    } else if (backButton) {
-        backButton.hide();
-    }
+
     if (!gameRunning) {
         return;
     }
@@ -112,6 +93,6 @@ function levelUp() {
     let newSpider = new Spider(height / 4 * spiders.length);
     spiders.push(newSpider);
 
-    console.log('Level Up', level);
+
 }
 

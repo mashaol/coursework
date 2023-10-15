@@ -20,4 +20,6 @@ function preload() {
 
     //heart image
     heartImage = loadImage("assets/heart.png");
+    //instruction button
+    howToPlay = loadImage("assets/HowToPlay.png");
 }

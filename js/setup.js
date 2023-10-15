@@ -19,16 +19,18 @@ function setup() {
     restartButton.mousePressed(restartGame);
     restartButton.hide();
     lastLevelUpTime = millis();
-    //creating the instruction button
-    instructionButton = createButton('Instructions');
-    instructionButton.position((windowWidth - 100)/2,(windowHeight/2));
-    instructionButton.mousePressed(showInstructions);
-    instructionButton.show();
+    //creating the instruction link
+    instructionsLink = createA('assets/instructions.html','','_blank');
+    instructionsLink.position((windowWidth - 100)/2-150,(windowHeight/2)-130);
+    howToPlay = createImg("assets/HowToPlay.png","Instruction");
+    howToPlay.parent(instructionsLink);
+    howToPlay.size(80,80);
     //initGame();
     startGame();
 }
 function initGame() {
     startButton.hide();
+    instructionsLink.hide();
     //space between trees so 4 fit in at a time, evenly spaced out
     let treeSpacing = width / 4;
     //constructs and pushes tree objects into an array tree, with treespacing being,
@@ -74,20 +76,4 @@ function startGame() {
 
     //initGame();
     noLoop();
-}
-
-//when instruction button is pressed
-showingInstructions = false;
-function showInstructions(){
-    console.log('show instruction');
-    showingInstructions = true;
-    console.log("showInstruction " + showingInstructions);
-    startButton.hide();
-    instructionButton.hide();
-}
-
-function hideInstructions(){
-    showingInstructions = false;
-    startButton.show();
-    instructionButton.show();
 }
